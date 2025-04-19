@@ -39,8 +39,8 @@ The system uses LangChain to orchestrate a complete RAG pipeline:
 
 ### Data
 -   Access to download the ClapNQ dataset (passages via Hugging Face datasets, questions/qrels provided in `data/`).
-   -  HuggingFace Datasets: PrimeQA/clapnq_passages ([huggingface.co/datasets/PrimeQA/clapnq_passages](https://huggingface.co/datasets/PrimeQA/clapnq_passages/viewer/default/train?views%5B%5D=train))
-   -  ClapNQ GitHub: PrimeQA/clapnq_passages ([github.com/primeqa/clapnq](https://github.com/primeqa/clapnq))
+    *  HuggingFace Datasets: PrimeQA/clapnq_passages ([huggingface.co/datasets/PrimeQA/clapnq_passages](https://huggingface.co/datasets/PrimeQA/clapnq_passages/viewer/default/train?views%5B%5D=train))
+    *  ClapNQ GitHub: ([github.com/primeqa/clapnq](https://github.com/primeqa/clapnq))
 
 ## Setup
 
