@@ -29,7 +29,7 @@ The system uses LangChain to orchestrate a complete RAG pipeline:
 ### Software
 -   Python 3.10 or higher
 -   Git
--   Ollama ([https://ollama.com/](https://ollama.com/)) installed and running.
+-   Ollama ([ollama.com](https://ollama.com/)) installed and running.
 -   An OpenAI API key (for RAGAs evaluation).
 
 ### Hardware
@@ -38,14 +38,16 @@ The system uses LangChain to orchestrate a complete RAG pipeline:
 -   At least 20GB of free disk space (for models, dependencies, and vector store).
 
 ### Data
--   Access to download the ClapNQ dataset (passages via Hugging Face `datasets`, questions/qrels provided in `data/`).
+-   Access to download the ClapNQ dataset (passages via Hugging Face datasets, questions/qrels provided in `data/`).
+   -  HuggingFace Datasets: PrimeQA/clapnq_passages ([huggingface.co/datasets/PrimeQA/clapnq_passages](https://huggingface.co/datasets/PrimeQA/clapnq_passages/viewer/default/train?views%5B%5D=train))
+   -  ClapNQ GitHub: PrimeQA/clapnq_passages ([github.com/primeqa/clapnq](https://github.com/primeqa/clapnq))
 
 ## Setup
 
 1.  **Clone the repository:**
     ```bash
-    git clone <your-repository-url>
-    cd local-rag-baseline # Or your project directory name
+    git clone https://github.com/patek1/LocalRAG.git
+    cd LocalRAG
     ```
 
 2.  **Create and activate a virtual environment:**
@@ -65,7 +67,7 @@ The system uses LangChain to orchestrate a complete RAG pipeline:
         ```
 
 4.  **Install and setup Ollama:**
-    *   Download and install Ollama from [https://ollama.com/](https://ollama.com/).
+    *   Download and install Ollama from [ollama.com](https://ollama.com/).
     *   Pull the required model (this might take time and disk space):
         ```bash
         ollama pull gemma3:12b
@@ -162,7 +164,6 @@ The project follows a modular structure within the `src/` directory:
     -   `metrics_latency.py`: Latency statistics calculation and saving.
 -   `utils.py`: Common utilities like logging setup.
 -   `main.py`: Main script orchestrating the entire process.
--   `debug/`: Contains utility scripts for debugging specific parts of the pipeline (e.g., ID matching, retrieval sampling).
 
 ## Metrics
 
@@ -184,8 +185,8 @@ The evaluation pipeline calculates and reports:
 
 ## Future Work (Thesis Part 2)
 
-This baseline provides the foundation for future work, which will involve implementing and evaluating improvements based on techniques proposed in RAG research literature. Potential areas include:
--   Advanced retrieval strategies (e.g., HyDE, query expansion).
--   Re-ranking retrieved passages.
--   Optimized prompting techniques.
--   Exploring different embedding or generation models (local or API-based).
+This baseline provides the foundation for future work, which will involve implementing and evaluating improvements based on techniques proposed in RAG research literature, focusing on the four RAG stages: 
+   - Pre-Retrieval
+   - Retrieval
+   - Post-Retrieval
+   - Generation.
