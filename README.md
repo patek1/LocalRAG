@@ -1,10 +1,3 @@
-Okay, let's refine the main README and create the subdirectory READMEs.
-
----
-
-### Improved `README.md` (Main Project Root)
-
-```markdown
 # Baseline Local RAG Pipeline Evaluation on Apple Silicon
 
 This project implements and evaluates a baseline Retrieval-Augmented Generation (RAG) pipeline, optimized for performance on Apple Silicon hardware, using the ClapNQ dataset.
@@ -133,21 +126,6 @@ Key parameters like model names, file paths, retrieval settings (`k`), and outpu
 Example: Process 10 questions with a fresh index:
 ```bash
 python src/main.py --limit 10 --reindex
-```
-
-### Running Tests
-
-Unit and integration tests are available in the `tests/` directory. Run them using pytest:
-
-```bash
-# Run all tests (some integration tests might be skipped if dependencies like Ollama/API keys aren't available)
-pytest
-
-# Run only unit tests (typically faster, no external dependencies)
-pytest -m "not integration"
-
-# Run only integration tests (requires Ollama, potentially API keys)
-pytest -m "integration"
 ```
 
 ## Expected Output
