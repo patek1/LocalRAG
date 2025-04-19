@@ -1,0 +1,18 @@
+{
+    "retrieval": {
+        "ndcg@10": 0.2043,
+        "precision@10": 0.0617,
+        "recall@10": 0.6167
+    },
+    "generation_rouge": {
+        "rouge1": 0.194726146569057,
+        "rouge2": 0.11106250097806337,
+        "rougeL": 0.16026865370317253,
+        "rougeLsum": 0.16517871225263475
+    },
+    "unanswerable_accuracy": 0.6066666666666667,
+    "ragas": {
+        "faithfulness": 0.7726,
+        "answer_relevancy": 0.4815
+    }
+}
