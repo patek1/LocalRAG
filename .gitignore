@@ -56,14 +56,8 @@ coverage.xml
 
 # Environment variables & Secrets
 .env
-# Allow .env.example but ignore other .env.* files
-.env.[^e]* 
-.env.[e][^x]*
-.env.[ex][^a]*
-.env.[exa][^m]*
-.env.[exam][^p]*
-.env.[examp][^l]*
-.env.[exampl][^e]*
+.env.*
+!.env.example
 *.env
 
 # Flask stuff:
