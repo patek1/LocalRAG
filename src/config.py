@@ -43,8 +43,8 @@ class Settings(BaseModel):
     passage_prefix: str = "passage: "
     
     # Ollama Params
-    ollama_temperature: float = 0.0
-    ollama_num_predict: int = 512
+    ollama_temperature: float = 0.0  # Temperature = 0.0 for deterministic generation
+    ollama_num_predict: int = 512  # Chunk size
     ollama_num_gpu: int = 1  # Number of GPU layers for Ollama
     
     # RAG Params

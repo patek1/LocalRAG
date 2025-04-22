@@ -14,5 +14,3 @@ This sub-package contains the Python modules responsible for evaluating the perf
 -   **`metrics_latency.py`**: Calculates and saves performance metrics.
     -   Computes statistical summaries (mean, median, P95, P99) for retrieval and generation latencies.
     -   Handles saving both latency and quality metrics to JSON files in the `results/` directory.
-
-The `__init__.py` file makes the primary evaluation functions directly accessible from the `src.eval` namespace.

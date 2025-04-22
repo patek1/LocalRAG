@@ -37,6 +37,7 @@ def format_rag_prompt(question: str, retrieved_docs: List[Document]) -> str:
         Passage 3 (Title: Last Title): Final text...
         ---
         Question: What is RAG?
+        If the context passages do not contain enough information to answer the question, respond with the single word 'unanswerable'.
         Answer:"
     """
     # Start building the prompt with the header

@@ -1,13 +1,14 @@
-# Baseline Local RAG Pipeline Evaluation on Apple Silicon
+# LocalRAG
 
 This project implements and evaluates a baseline Retrieval-Augmented Generation (RAG) pipeline, optimized for performance on Apple Silicon hardware, using the ClapNQ dataset.
 
 ## Project Context
 
-This repository represents **Part 1** of a bachelor thesis project. The goal of this part is to:
-1.  Establish a functional baseline RAG system using locally executable models (where feasible).
-2.  Evaluate its performance comprehensively across retrieval quality, generation quality, and latency metrics.
-3.  Provide a reproducible foundation for **Part 2**, which will explore and implement various techniques to improve the performance of this baseline system.
+This repository contains the **empirical component** of my bachelor‑thesis at University of St. Gallen. Its objectives are to:
+1.  Establish a functional baseline RAG system using locally executable models (where feasible).  
+2.  Evaluate its performance thoroughly across retrieval quality, generation quality, and latency metrics.  
+3.  Deliver a fully reproducible foundation that others can extend with further performance‑improvement techniques.
+
 
 ## System Overview
 
@@ -143,7 +144,6 @@ python src/main.py --limit 10 --reindex
 Since this project targets local execution on Apple Silicon, manual performance monitoring is crucial:
 -   Use tools like `asitop` (recommended), `mactop`, or macOS's built-in `Activity Monitor`.
 -   Observe CPU usage, RAM consumption (especially during embedding/generation), and GPU utilization (MPS activity).
--   Note any thermal throttling or significant performance degradation during long runs.
 
 ## Architecture
 
@@ -183,10 +183,11 @@ The evaluation pipeline calculates and reports:
     -   Retrieval Latency (Mean, Median, P95, P99) in seconds.
     -   Generation Latency (Mean, Median, P95, P99) in seconds.
 
-## Future Work (Thesis Part 2)
+## Future Work
 
-This baseline provides the foundation for future work, which will involve implementing and evaluating improvements based on techniques proposed in RAG research literature, focusing on the four RAG stages: 
-   - Pre-Retrieval
-   - Retrieval
-   - Post-Retrieval
-   - Generation.
+While this project concludes with the delivery of a reproducible baseline, it is intended as a springboard for subsequent research. Future contributors can build on this groundwork by implementing and rigorously evaluating enhancement techniques proposed in the RAG literature.
+
+## Contact
+
+If you have questions or would like to discuss extending this baseline, feel free to contact me:
+**Mischa Büchel**, [mischa@quantflow.tech](mischa@quantflow.tech)

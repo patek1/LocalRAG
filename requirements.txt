@@ -2,19 +2,18 @@
 # python>=3.10
 
 # Langchain Ecosystem (Starting with >=0.1.x range for stability relative to spec)
-# Pip will likely pull newer 0.1.x or maybe 0.2.x if compatible. Be prepared to pin later.
 langchain>=0.1.0
 langchain-core>=0.1.0
-langchain-community>=0.0.1 # These follow core/main langchain releases
-langchain-ollama>=0.0.1    # These follow core/main langchain releases
+langchain-community>=0.0.1 # For langchain
+langchain-ollama>=0.0.1    # For langchain
 langchain-huggingface>=0.0.1 # For HuggingFace embeddings
 langchain-chroma>=0.0.1    # For ChromaDB vector store
 langchain-openai>=0.1.0    # For OpenAI integration
 
-# Vector DB (Explicitly stay below 0.5.x for now to match likely spec era)
+# Vector DB
 chromadb>=0.4.20,<0.5.0
 
-# Embeddings & HF Ecosystem (Update sentence-transformers)
+# Embeddings & HF Ecosystem
 sentence-transformers>=3.0.0 # Use latest stable 3.x
 torch>=2.3.0               
 transformers>=4.37.0         # Stable baseline
@@ -25,10 +24,10 @@ ollama>=0.1.0 # Python client version
 
 # Evaluation & Utilities
 pandas>=2.1.0
-numpy>=1.26.0,<2.0.0       # Stay on latest 1.x numpy for broad compatibility
+numpy>=1.26.0,<2.0.0
 ranx>=0.3.9
 evaluate>=0.4.1
 rouge_score>=0.1.2
 ragas>=0.1.0
-pydantic>=2.5.0            # Use Pydantic v2
+pydantic>=2.5.0
 python-dotenv>=1.0.0
