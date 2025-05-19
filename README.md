@@ -1,59 +1,14 @@
 # LocalRAG
 
-This project implements and evaluates a Retrieval-Augmented Generation (RAG) pipeline optimized for performance on Apple Silicon hardware, supporting multiple local language models and diverse datasets.
+This project implements and evaluates a Retrieval-Augmented Generation (RAG) pipeline optimized for performance on consumer hardware, supporting multiple local language models and diverse datasets.
 
 ## Project Context
 
 This repository contains the core components of a RAG system that:
-1.  Establishes a functional RAG system using locally executable models (where feasible).  
+1.  Establishes a functional RAG system using locally executable models.  
 2.  Evaluates its performance thoroughly across retrieval quality, generation quality, and latency metrics.  
 3.  Delivers a fully reproducible foundation that others can extend with further performance‑improvement techniques.
-4.  Supports evaluation of various language models and datasets to enable comprehensive benchmarking.
 
-## Project Development
-
-### Phase 1: Configuration and Data Loading
-- Implemented configuration system with multi-dataset support using Pydantic models
-- Created the foundation for data loading with HuggingFace datasets integration
-- Established the project structure and module organization
-
-### Phase 2: Data Processing and Indexing
-- Implemented full ClapNQ dataset processing in `process_clapnq_for_rag` function
-- Added data saving functionality for processed corpus and questions
-- Created complete indexing pipeline using ChromaDB:
-  - Initialized embedding model with MPS acceleration on Apple Silicon
-  - Integrated vector store using ChromaDB for efficient retrieval
-  - Implemented corpus indexing with batch processing
-  - Added support for reindexing using the `--reindex` flag
-- Created comprehensive test suite for:
-  - Data processing functionality
-  - Indexing pipeline
-  - End-to-end script execution
-
-### Phase 3: Retrieval, Generation and Evaluation
-- Implemented retrieval system using the indexed corpus
-- Integrated with Ollama for local generation
-- Added evaluation metrics for retrieval, generation, and end-to-end performance
-- Created a streamlined pipeline for processing questions through the RAG system
-
-### Phase 4: Multi-Dataset Support
-- Enhanced configuration system to handle multiple datasets
-- Implemented directory structure for processed data and results
-- Added random subset selection with reproducibility
-- Updated metrics calculation to handle datasets without unanswerable questions
-
-### Phase 5: TriviaQA and HotpotQA Integration
-- Implemented data processing for TriviaQA and HotpotQA datasets
-- Added dataset-specific field mappings and configurations
-- Enhanced indexing script to handle different dataset structures
-- Created comprehensive tests for new dataset processing
-
-### Phase 6: Testing, Documentation, and GPU Optimization
-- Performed comprehensive testing across all datasets and models
-- Confirmed GPU utilization with `ollama_num_gpu=999` configuration
-- Verified proper metrics collection and results organization
-- Created detailed documentation of testing process and results
-- Completed final project documentation and structure verification
 
 ## System Overview
 
@@ -61,9 +16,9 @@ The system uses LangChain to orchestrate a complete RAG pipeline with support fo
 
 -   **Datasets**: Supports ClapNQ, TriviaQA, and HotpotQA datasets from Hugging Face.
 
--   **Embedding**: Uses `intfloat/e5-base-v2` for document and query embedding, optimized for Metal Performance Shaders (MPS) on Apple Silicon.
+-   **Embedding**: Uses `intfloat/e5-base-v2` for document and query embedding
 
--   **Vector Storage**: ChromaDB for efficient local passage indexing and retrieval, with separate indices for each dataset.
+-   **Vector Storage**: Chroma for efficient local passage indexing and retrieval, with separate indices for each dataset.
 
 -   **Generation**: Multiple models via Ollama, including:
     -   `gemma3:1b`, `gemma3:4b`, `gemma3:12b`
@@ -79,7 +34,7 @@ The system uses LangChain to orchestrate a complete RAG pipeline with support fo
     -   End-to-End RAG Quality: Faithfulness, Answer Relevancy (using `RAGAs` with OpenAI's `gpt-4.1-mini-2025-04-14` API)
     -   Performance: Retrieval and Generation Latency (mean, median, P95, P99)
 
-**Note on Evaluation Model:** While the goal is local execution, RAGAs evaluation using local models proved prohibitively resource-intensive on typical Apple Silicon hardware. Therefore, RAGAs evaluation currently utilizes the OpenAI API for faster and more reliable results. The core generation pipeline remains local.
+**Note on Evaluation Model:** While the goal is local execution, RAGAs evaluation using local models proved prohibitively resource-intensive on consumer hardware. Therefore, RAGAs evaluation currently utilizes the OpenAI API for faster and more reliable results. The core generation pipeline remains local.
 
 ## Prerequisites
 
@@ -90,8 +45,7 @@ The system uses LangChain to orchestrate a complete RAG pipeline with support fo
 -   An OpenAI API key (optional, for RAGAs evaluation only)
 
 ### Hardware
--   Apple Silicon Mac (M1, M2, M3 series) with macOS 12.3+ recommended for MPS acceleration
--   Tested on M3 Max with 48GB RAM, but should run (potentially slower) on less powerful Apple Silicon machines
+-   Tested on M3 Max with 48GB RAM, but should run (potentially slower) on less powerful machines
 -   At least 20GB of free disk space (for models, dependencies, and vector stores)
 
 ### Data
@@ -223,20 +177,11 @@ python src/main.py --model gemma3:12b --dataset TriviaQA --limit 50
 
 ## Expected Output
 
-1.  **Console Logs:** Detailed progress information, latency numbers per question, final evaluation metrics, and any warnings/errors.
+1.  **Vector Store:** Dataset-specific Chroma indices created in `vectorstores/<dataset_name>_corpus/`.
 
-2.  **Vector Store:** Dataset-specific ChromaDB indices created in `vectorstores/<dataset_name>_corpus/`.
-
-3.  **Results Files:** JSON files saved in the `results/<model_tag_safe>/<dataset_name>/` directory:
+2.  **Results Files:** JSON files saved in the `results/<model_tag_safe>/<dataset_name>/` directory:
     -   `<N>_quality_metrics.json`: Contains retrieval (NDCG@10, P@10, R@10), generation (ROUGE, Unanswerable Accuracy), and RAGAs metrics for a run with N questions.
     -   `latency_metrics.json`: Contains mean, median, P95, P99 latency for retrieval and generation steps, along with the `source_subset_size` indicating the number of questions used to generate these stats.
-
-## Performance Monitoring
-
-Since this project targets local execution on Apple Silicon, manual performance monitoring is crucial:
--   Use tools like `asitop` (recommended), `mactop`, or macOS's built-in `Activity Monitor`.
--   Observe CPU usage, RAM consumption (especially during embedding/generation), and GPU utilization (MPS activity).
--   The `ollama_num_gpu=999` setting will attempt to offload as many model layers as possible to the GPU.
 
 ## Architecture
 
@@ -246,7 +191,7 @@ The project follows a modular structure:
     -   `config.py`: Central configuration management with dataset configs
     -   `data_loader/`: Dataset loading and processing for all supported datasets
     -   `embedding.py`: Embedding model with MPS acceleration
-    -   `vector_store.py`: ChromaDB vector store management
+    -   `vector_store.py`: Chroma vector store management
     -   `indexing.py`: Corpus indexing pipeline with batch processing
     -   `prompting.py`: Prompt formatting for the generator LLM
     -   `generation.py`: Ollama LLM initialization with GPU optimization
@@ -264,6 +209,9 @@ The project follows a modular structure:
     -   `subsets/`: Question ID subsets for reproducible evaluation (generated)
     -   Original ClapNQ files used by the ClapNQ processor
 
+-   `vectorstores/`: Chroma vector indices for corpus retrieval (generated)
+
+-   `results/`: Results organized by model and dataset (generated)
 
 
 **Note:** Directories marked as "(generated)" are created during execution and are not included in the repository.
@@ -294,7 +242,6 @@ This project provides a robust framework for evaluating various RAG configuratio
 - Exploring advanced retrieval techniques
 - Adding more sophisticated prompt engineering
 - Implementing more comprehensive evaluation metrics
-- Exploring fully local alternatives to OpenAI for RAGAs evaluation
 
 ## Contact
 
