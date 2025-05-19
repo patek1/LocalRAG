@@ -1,0 +1,185 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class$
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+# Translations
+*.mo
+*.pot
+*.po
+
+# Environment variables & Secrets
+.env
+.env.*
+!.env.example
+*.env
+
+# Flask stuff:
+instance/
+.webassets-cache
+
+# Scrapy stuff:
+.scrapy
+
+# Sphinx documentation (often generated)
+# docs/_build/ # Keep docs dir if it contains source .rst or .md files
+
+# PyBuilder
+target/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+.python-version
+
+# PEP 582; used by PDM.
+__pypackages__/
+
+# Celery stuff
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Environments / Virtual Environments
+.env/
+.venv/
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# pytype static analysis logs
+.pytype/
+
+# Cython debug symbols
+cython_debug/
+
+# Editor / IDE specific files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+#========================================
+# Project Specific Exclusions
+#========================================
+
+# Development planning and documentation artifacts
+Blueprint.md
+Spec.md
+ToDos.md
+documentation/
+
+# Testing code
+tests/
+pytest.ini
+
+# Debugging code
+debug/
+
+# Generated data directories
+vectorstores/
+data/processed_corpora/
+data/processed_questions/
+data/subsets/
+
+# Results and analysis files
+results/
+charts/
+unanswerable_analysis_details.jsonl
+
+# Chart generation and analysis scripts
+boxplot_retrieval_latency.py
+generate_metric_stability_charts.py
+chart_generator.py
+chart_data_loader.py
+collect_retrieval_latency.py
+
+# Debug and development scripts
+scripts/analyze_unanswerable_errors.py
+scripts/inspect_hotpotqa.py
+scripts/inspect_triviaqa.py
+scripts/test_hotpotqa_processor.py
+
+# Backup files
+*.bak
+*.bak*
+
+# Log files
+*.log

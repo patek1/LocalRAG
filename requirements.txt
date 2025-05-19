@@ -1,0 +1,33 @@
+# Base environment
+# python>=3.10
+
+# Langchain Ecosystem (Starting with >=0.1.x range for stability relative to spec)
+langchain>=0.1.0
+langchain-core>=0.1.0
+langchain-community>=0.0.1 # For langchain
+langchain-ollama>=0.0.1    # For langchain
+langchain-huggingface>=0.0.1 # For HuggingFace embeddings
+langchain-chroma>=0.0.1    # For ChromaDB vector store
+langchain-openai>=0.1.0    # For OpenAI integration (RAGAs evaluation)
+
+# Vector DB
+chromadb>=0.4.20,<0.5.0
+
+# Embeddings & HF Ecosystem
+sentence-transformers>=3.0.0 # Use latest stable 3.x
+torch>=2.3.0               
+transformers>=4.37.0         # Stable baseline
+datasets>=2.15.0             # For Hugging Face datasets with trust_remote_code=True
+
+# Ollama Client
+ollama>=0.1.0 # Python client version
+
+# Evaluation & Utilities
+pandas>=2.1.0
+numpy>=1.26.0,<2.0.0
+ranx>=0.3.9
+evaluate>=0.4.1
+rouge_score>=0.1.2
+ragas>=0.1.0
+pydantic>=2.5.0
+python-dotenv>=1.0.0
